@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Git Setup & Cheat Sheet</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles (if needed, original styles.css retained) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="bg-light py-4">
+    <div class="container">
+      <h1 class="display-4">Git Setup & Cheat Sheet</h1>
+      <p class="lead">Quick guide to set up Git and a compact cheat sheet including a global commit convention.</p>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    <section id="setup" class="mb-5">
+      <h2 class="h1 mb-4">Install Git</h2>
+      <ul class="list-unstyled">
+        <li class="mb-2"><strong>Windows:</strong> Download from <a href="https://git-scm.com/download/win" class="text-decoration-none">git-scm.com</a> and run the installer.</li>
+        <li class="mb-2"><strong>macOS:</strong> Install via Homebrew: <code>brew install git</code> or download from <a href="https://git-scm.com" class="text-decoration-none">git-scm.com</a>.</li>
+        <li class="mb-2"><strong>Linux:</strong> Use your package manager, e.g. <code>sudo apt install git</code> or <code>sudo dnf install git</code>.</li>
+      </ul>
+
+      <h3 class="h2 mt-4 mb-3">Essential Global Configuration</h3>
+      <p>These Git settings are essential because they tell Git who you are, so your commits include your name and email. This ensures your work is properly attributed, linked to your GitHub account, and consistent across all your projects.</p>
+      <pre class="text-bg-dark p-3 rounded"><code># Enter command line in Git Bash, Terminal, or Powershell
+<span class="text-success">git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+
+      <h3 class="h2 mt-4 mb-3">Step-by-Step SSH Setup</h3>
+      <p>An SSH key lets your computer securely connect to GitHub without using a password.
+It provides safe, encrypted authentication, makes Git operations like push/pull easier, and is more secure than using a password.</p>
+      <pre class="text-bg-dark p-3 rounded"><code># Generate an SSH key
+<span class="text-success">ssh-keygen -t rsa -b 4096 -C "you@example.com"</span>
+
+# Once you run the command press Enter to accept the default file location.
+# Next, you'll be prompted to enter a passphrase. You can choose to set one for 
+added security or leave it empty for no passphrase (by pressing Enter twice).
+
+# Start the ssh-agent in the background
+<span class="text-success">eval "$(ssh-agent -s)"</span>
+
+# Add your SSH key to the agent
+<span class="text-success">ssh-add ~/.ssh/id_ed25519</span>
+
+# Check if the key was added successfully
+<span class="text-success">ssh-add -l</span>
+
+# Add your Generated SSH key to GitHub
+<span class="text-info">GitHub → Settings → SSH and GPG keys → New SSH key → Enter any title 
+→ Paste your key → Add SSH key</span>
+</code></pre>
+    </section>
+
+    <section id="cheatsheet" class="mb-5">
+      <h2 class="h1 mb-4">Git Cheat Sheet</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Initialize repo:</strong> <code>git init</code></li>
+        <li class="list-group-item"><strong>Clone:</strong> <code>git clone &lt;url&gt;</code></li>
+        <li class="list-group-item"><strong>Status:</strong> <code>git status</code></li>
+        <li class="list-group-item"><strong>Add:</strong> <code>git add &lt;file|.&gt;</code></li>
+        <li class="list-group-item"><strong>Commit:</strong> <code>git commit -m "Short message"</code></li>
+        <li class="list-group-item"><strong>Amend last commit:</strong> <code>git commit --amend --no-edit</code></li>
+        <li class="list-group-item"><strong>Branch:</strong> <code>git switch -c &lt;branch&gt;</code> or <code>git checkout -b &lt;branch&gt;</code></li>
+        <li class="list-group-item"><strong>Merge:</strong> <code>git merge &lt;branch&gt;</code></li>
+        <li class="list-group-item"><strong>Rebase:</strong> <code>git rebase &lt;branch&gt;</code></li>
+        <li class="list-group-item"><strong>Pull:</strong> <code>git pull</code></li>
+        <li class="list-group-item"><strong>Push:</strong> <code>git push -u origin &lt;branch&gt;</code></li>
+        <li class="list-group-item"><strong>Stash:</strong> <code>git stash</code> / <code>git stash pop</code></li>
+        <li class="list-group-item"><strong>View log:</strong> <code>git log --oneline --graph --decorate --all</code></li>
+      </ul>
+    </section>
+
+    <section id="commit-convention" class="mb-5">
+      <h2 class="h1 mb-4">Global Commit Convention</h2>
+      <p>Global Commit Convention (often called Commit Message Convention or Commit Guidelines) is a standardized way of writing Git commit messages. It’s important because it ensures your commit history is clear, consistent, and easy to understand, especially in collaborative projects.</p>
+
+      <h3 class="h2 mt-4 mb-3">Recommended rules</h3>
+      <pre class="text-bg-dark p-3 rounded"><code>type(scope): short summary (<=50 chars) 
+        
+A more detailed description of the change, explaining why it was made and any 
+additional context. Wrap lines at ~72 characters. 
+
+Refs: #123</code></pre>
+
+      <h3 class="h2 mt-4 mb-3">Example</h3>
+      <pre class="text-bg-dark p-3 rounded"><code># A backslash \ at the end of a line tells the shell the command continues
+on the next line.
+
+<span class="text-success">git commit -m "feat(auth): add Google login button" \ 
+           -m "A more detailed description of the change, explaining why it
+            was made and any additional context. This change integrates OAuth2
+            authentication so users can log in using their Google account.
+Refs: #24"</span></code></pre>
+    </section>
+    <section id="resources" class="mb-5">
+      <h2 class="h1 mb-4">Resources</h2>
+      <ul class="list-unstyled">
+  <li class="mb-2">
+    <a href="https://git-scm.com/book/en/v2" class="text-decoration-none custom-link">
+      Pro Git book
+    </a>
+  </li>
+  <li class="mb-2">
+    <a href="https://www.conventionalcommits.org/" class="text-decoration-none custom-link">
+      Conventional Commits
+    </a>
+  </li>
+</ul>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white py-3 mt-5 text-center">
+    <div class="container">
+      <p>Created to help new users get started with Git.</p>
+      <p>&copy; 2025 Hadeslokiama</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
