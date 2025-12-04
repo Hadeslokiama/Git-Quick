@@ -196,8 +196,7 @@ git <span class="text-warning">add</span> .</span> <span class="text-info"># Add
       <div class="accordion-body">
         Branches allow you to work on new features without affecting the main codebase. You can create and switch branches with <code>git branch</code> and <code>git checkout</code>. They help keep work organized and isolated from the stable code.
         <h5>Command:</h5>
-        <pre class="text-bg-dark p-3 rounded"><code>
-<span class="text-light">git <span class="text-warning">branch</span> feature-login
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">branch</span> feature-login
 git <span class="text-warning">checkout</span> feature-login
 <span class="text-info"># or</span>
 git <span class="text-warning">checkout -b</span> feature-login</span>
@@ -216,13 +215,11 @@ git <span class="text-warning">checkout -b</span> feature-login</span>
       <div class="accordion-body">
         The <code>git merge</code> command combines changes from one branch into another. It can create a merge commit or fast-forward, depending on the branch history. Conflicts may appear if both branches modify the same parts of a file.
         <h5>Command:</h5>
-        <pre class="text-bg-dark p-3 rounded"><code>
-<span class="text-light">git <span class="text-warning">checkout</span> main
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">checkout</span> main
 git <span class="text-warning">merge</span> feature-login</span>
 </code></pre>
         <h5>Output:</h5>
-        <pre class="text-bg-dark p-3 rounded"><code>
-Updating 1a2b3c..4d5e6f
+        <pre class="text-bg-dark p-3 rounded"><code>Updating 1a2b3c..4d5e6f
 Fast-forward
  login.html | 20 ++++++++++++++++++++
 </code></pre>
@@ -240,8 +237,7 @@ Fast-forward
       <div class="accordion-body">
         The <code>git rebase</code> command rewrites history by moving your branch onto the latest version of another branch. It creates a cleaner, linear commit history. Avoid rebasing public/shared branches to prevent conflicts for others.
         <h5>Command:</h5>
-        <pre class="text-bg-dark p-3 rounded"><code>
-<span class="text-light">git <span class="text-warning">checkout</span> feature-login
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">checkout</span> feature-login
 git <span class="text-warning">rebase</span> main</span>
 </code></pre>
       </div>
@@ -258,8 +254,7 @@ git <span class="text-warning">rebase</span> main</span>
       <div class="accordion-body">
         The <code>git pull</code> command fetches and merges changes from a remote repository into your current branch. It keeps your local work updated with the team’s changes. Conflicts may occur if your local changes conflict with the remote version.
         <h5>Command:</h5>
-        <pre class="text-bg-dark p-3 rounded"><code>
-<span class="text-light">git <span class="text-warning">pull</span> origin main</span>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">pull</span> origin main</span>
 </code></pre>
       </div>
     </div>
@@ -275,8 +270,17 @@ git <span class="text-warning">rebase</span> main</span>
       <div class="accordion-body">
         The <code>git push</code> command uploads your commits to a remote repository (like GitHub). It makes your changes available to others and updates the remote branch.If your branch is behind the remote, Git may require a pull first.
         <h5>Command:</h5>
-        <pre class="text-bg-dark p-3 rounded"><code>
-<span class="text-light">git <span class="text-warning">push</span> origin main</span>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">push</span> origin main</span></code></pre>
+        <h5>Output:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 544 bytes | 544.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/YourProject/Project.git
+   d327d40..326e145  main -> main
 </code></pre>
       </div>
     </div>
@@ -292,8 +296,7 @@ git <span class="text-warning">rebase</span> main</span>
       <div class="accordion-body">
         The <code>git stash</code> command temporarily saves uncommitted changes so you can work on something else. It lets you switch branches or pull updates safely. You can reapply stashed changes later using <code>git stash apply</code>.
         <h5>Command:</h5>
-        <pre class="text-bg-dark p-3 rounded"><code>
-<span class="text-light">git <span class="text-warning">stash</span>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">stash</span>
 git <span class="text-warning">stash apply</span></span>
 </code></pre>
       </div>
