@@ -28,75 +28,325 @@
 
       <h3 class="h2 mt-4 mb-3">Essential Global Configuration</h3>
       <p>These Git settings are essential because they tell Git who you are, so your commits include your name and email. This ensures your work is properly attributed, linked to your GitHub account, and consistent across all your projects.</p>
-      <pre class="text-bg-dark p-3 rounded"><code># Enter command line in Git Bash, Terminal, or Powershell
-<span class="text-success">git config --global user.name "Your Name"
-git config --global user.email "you@example.com"</code></pre>
+      <pre class="text-bg-dark p-3 rounded"><code><span class="text-info"># Enter command line in Git Bash, Terminal, or Powershell</span>
+git <span class="text-warning">config</span> --global user.name "Your Name"
+git <span class="text-warning">config</span> --global user.email "you@example.com"</code></pre>
 
       <h3 class="h2 mt-4 mb-3">Step-by-Step SSH Setup</h3>
       <p>An SSH key lets your computer securely connect to GitHub without using a password.
 It provides safe, encrypted authentication, makes Git operations like push/pull easier, and is more secure than using a password.</p>
-      <pre class="text-bg-dark p-3 rounded"><code># Generate an SSH key
-<span class="text-success">ssh-keygen -t rsa -b 4096 -C "you@example.com"</span>
+      <pre class="text-bg-dark p-3 rounded"><code><span class="text-info"># Generate an SSH key</span>
+<span class="text-warning">ssh-keygen -t rsa -b 4096 -C</span> "you@example.com"
 
 # Once you run the command press Enter to accept the default file location.
-# Next, you'll be prompted to enter a passphrase. You can choose to set one for 
-added security or leave it empty for no passphrase (by pressing Enter twice).
+# Next, you'll be prompted to enter a passphrase. You can choose to set one for added security or leave it empty for no passphrase (by pressing Enter twice).
 
-# Start the ssh-agent in the background
-<span class="text-success">eval "$(ssh-agent -s)"</span>
+<span class="text-info"># Start the ssh-agent in the background</span>
+<span class="text-warning">eval</span> "$(ssh-agent -s)"
 
-# Add your SSH key to the agent
-<span class="text-success">ssh-add ~/.ssh/id_ed25519</span>
+<span class="text-info"># Add your SSH key to the agent</span>
+ssh-add ~/.ssh/id_ed25519
 
-# Check if the key was added successfully
-<span class="text-success">ssh-add -l</span>
+<span class="text-info"># Check if the key was added successfully</span>
+ssh-add -l
 
-# Add your Generated SSH key to GitHub
-<span class="text-info">GitHub → Settings → SSH and GPG keys → New SSH key → Enter any title 
-→ Paste your key → Add SSH key</span>
+<span class="text-info"># Copy the SSH key to your clipboard</span>
+<span class="text-warning">cat</span> ~/.ssh/id_ed25519.pub
+
+<span class="text-info"># Add your Generated SSH key to GitHub</span>
+GitHub → Settings → SSH and GPG keys → New SSH key → Enter any title → Paste your key → Add SSH key</span>
 </code></pre>
     </section>
-
     <section id="cheatsheet" class="mb-5">
       <h2 class="h1 mb-4">Git Cheat Sheet</h2>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Initialize repo:</strong> <code>git init</code></li>
-        <li class="list-group-item"><strong>Clone:</strong> <code>git clone &lt;url&gt;</code></li>
-        <li class="list-group-item"><strong>Status:</strong> <code>git status</code></li>
-        <li class="list-group-item"><strong>Add:</strong> <code>git add &lt;file|.&gt;</code></li>
-        <li class="list-group-item"><strong>Commit:</strong> <code>git commit -m "Short message"</code></li>
-        <li class="list-group-item"><strong>Amend last commit:</strong> <code>git commit --amend --no-edit</code></li>
-        <li class="list-group-item"><strong>Branch:</strong> <code>git switch -c &lt;branch&gt;</code> or <code>git checkout -b &lt;branch&gt;</code></li>
-        <li class="list-group-item"><strong>Merge:</strong> <code>git merge &lt;branch&gt;</code></li>
-        <li class="list-group-item"><strong>Rebase:</strong> <code>git rebase &lt;branch&gt;</code></li>
-        <li class="list-group-item"><strong>Pull:</strong> <code>git pull</code></li>
-        <li class="list-group-item"><strong>Push:</strong> <code>git push -u origin &lt;branch&gt;</code></li>
-        <li class="list-group-item"><strong>Stash:</strong> <code>git stash</code> / <code>git stash pop</code></li>
-        <li class="list-group-item"><strong>View log:</strong> <code>git log --oneline --graph --decorate --all</code></li>
-      </ul>
+      <div class="accordion" id="accordionExample">
+  <!-- Init -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Initialize Repository
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git init</code> command initializes a new Git repository on your local machine. It creates a new .git subdirectory in your project folder, which contains all the necessary metadata and object database for your version control.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">init</span></span></code></pre>
+        <h5>Output:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>Initialized empty Git repository in /Users/me/myproject/.git/</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Clone -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Clone Repository
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git clone</code> command copies a remote repository (e.g., from GitHub) to your local machine. The URL specifies the location of the repository you want to clone. Which can be found on the repository page on GitHub by clicking the <strong>"Code"</strong> button and copying the URL provided. You may choose either the HTTPS or SSH URL based on your authentication preference.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">clone</span> https://github.com/user/repo.git</span></code></pre>
+        <h5>Output:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>Cloning into 'repo'...
+remote: Enumerating objects: 42, done.
+remote: Counting objects: 100% (42/42), done.
+remote: Compressing objects: 100% (32/32), done.
+Receiving objects: 100% (42/42), 12.34 KiB | 2.00 MiB/s, done.</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Status -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Check Respository Status
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git status</code> command displays the state of the working directory and the staging area. It lets you see which changes have been staged, which haven’t, and which files aren’t being tracked by Git. This is useful for understanding what will be included in the next commit.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">status</span></span></code></pre>
+        <h5>Output:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">On branch main
+Your branch is up to date with 'origin/main'.
+
+<span class="text-info"># If file is not added to staging area.</span>
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        <span class="text-danger">modified:   index.html</span>
+no changes added to commit (use "git add" and/or "git commit -a")</span>
+
+<span class="text-info"># If file is added to staging area.</span>
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        <span class="text-success">modified:   index.html</span>
+</code></pre>
+      </div>
+    </div>
+  </div>
+    <!-- Add Files -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdd" aria-expanded="false" aria-controls="collapseAdd">
+        Add Files to Staging Area
+      </button>
+    </h2>
+    <div id="collapseAdd" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git add</code> command stages changes so they are ready to be committed. You can add individual files or everything at once. 
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">add</span> index.html <span class="text-info"># Adds only the specific file to staging area.</span>
+git <span class="text-warning">add</span> .</span> <span class="text-info"># Adds all changes to staging area.</span></code></pre>
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Commit -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCommit" aria-expanded="false" aria-controls="collapseCommit">
+        Commit Changes
+      </button>
+    </h2>
+    <div id="collapseCommit" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git commit</code> command permanently saves staged changes in the repository with a message. It creates a new commit that includes all changes added to the staging area. Creating a commit helps you keep a history of changes and makes it easier to collaborate with others by using the global commit convention.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">commit -m</span> "feat(auth): add Google login button" <span class="text-warning">-m</span> "A more detailed description of the change, explaining why it was made and any additional context. This change integrates OAuth2 authentication so users can log in using their Google account. Refs: #24"</span></code></pre>
+        <h5>Output:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>[main 3fae123] Update layout and styles
+ 3 files changed, 52 insertions(+), 10 deletions(-)
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Amend Commit -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAmend" aria-expanded="false" aria-controls="collapseAmend">
+        Amend Last Commit
+      </button>
+    </h2>
+    <div id="collapseAmend" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git commit --amend</code> command updates the most recent commit by adding new changes or fixing the commit message. It replaces the previous commit with a new one instead of creating a separate commit. Avoid amending commits that have already been pushed because it rewrites history.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">commit</span> --amend -m "Fix: correct typo in layout"</span>
+</code></pre>
+        <h5>Output:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>[main 4bd2c18] Fix: correct typo in layout
+ Date: Tue Feb 4 12:22:10 2025
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Branch -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBranch" aria-expanded="false" aria-controls="collapseBranch">
+        Create and Switch Branches
+      </button>
+    </h2>
+    <div id="collapseBranch" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Branches allow you to work on new features without affecting the main codebase. You can create and switch branches with <code>git branch</code> and <code>git checkout</code>. They help keep work organized and isolated from the stable code.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>
+<span class="text-light">git <span class="text-warning">branch</span> feature-login
+git <span class="text-warning">checkout</span> feature-login
+<span class="text-info"># or</span>
+git <span class="text-warning">checkout -b</span> feature-login</span>
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Merge -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMerge" aria-expanded="false" aria-controls="collapseMerge">
+        Merge Branches
+      </button>
+    </h2>
+    <div id="collapseMerge" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git merge</code> command combines changes from one branch into another. It can create a merge commit or fast-forward, depending on the branch history. Conflicts may appear if both branches modify the same parts of a file.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>
+<span class="text-light">git <span class="text-warning">checkout</span> main
+git <span class="text-warning">merge</span> feature-login</span>
+</code></pre>
+        <h5>Output:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>
+Updating 1a2b3c..4d5e6f
+Fast-forward
+ login.html | 20 ++++++++++++++++++++
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Rebase -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRebase" aria-expanded="false" aria-controls="collapseRebase">
+        Rebase Branches
+      </button>
+    </h2>
+    <div id="collapseRebase" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git rebase</code> command rewrites history by moving your branch onto the latest version of another branch. It creates a cleaner, linear commit history. Avoid rebasing public/shared branches to prevent conflicts for others.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>
+<span class="text-light">git <span class="text-warning">checkout</span> feature-login
+git <span class="text-warning">rebase</span> main</span>
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Pull -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePull" aria-expanded="false" aria-controls="collapsePull">
+        Pull Latest Changes
+      </button>
+    </h2>
+    <div id="collapsePull" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git pull</code> command fetches and merges changes from a remote repository into your current branch. It keeps your local work updated with the team’s changes. Conflicts may occur if your local changes conflict with the remote version.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>
+<span class="text-light">git <span class="text-warning">pull</span> origin main</span>
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Push -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePush" aria-expanded="false" aria-controls="collapsePush">
+        Push Changes to Remote
+      </button>
+    </h2>
+    <div id="collapsePush" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git push</code> command uploads your commits to a remote repository (like GitHub). It makes your changes available to others and updates the remote branch.If your branch is behind the remote, Git may require a pull first.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>
+<span class="text-light">git <span class="text-warning">push</span> origin main</span>
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- Stash -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStash" aria-expanded="false" aria-controls="collapseStash">
+        Stash Changes
+      </button>
+    </h2>
+    <div id="collapseStash" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git stash</code> command temporarily saves uncommitted changes so you can work on something else. It lets you switch branches or pull updates safely. You can reapply stashed changes later using <code>git stash apply</code>.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>
+<span class="text-light">git <span class="text-warning">stash</span>
+git <span class="text-warning">stash apply</span></span>
+</code></pre>
+      </div>
+    </div>
+  </div>
+  <!-- View Logs -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseView" aria-expanded="false" aria-controls="collapseView">
+        View Commit History
+      </button>
+    </h2>
+    <div id="collapseView" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The <code>git log</code> command shows the full commit history with details. It helps track changes and understand the project’s evolution. You can use extra options to visualize or simplify the history.
+        <h5>Command:</h5>
+        <pre class="text-bg-dark p-3 rounded"><code>
+<span class="text-light">git <span class="text-warning">log</span></span>
+</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
     </section>
 
     <section id="commit-convention" class="mb-5">
       <h2 class="h1 mb-4">Global Commit Convention</h2>
       <p>Global Commit Convention (often called Commit Message Convention or Commit Guidelines) is a standardized way of writing Git commit messages. It’s important because it ensures your commit history is clear, consistent, and easy to understand, especially in collaborative projects.</p>
-
+      <h3 class="mt-3">Common Commit Types</h5>
+        <ul class="list-unstyled">
+          <li><strong>feat</strong> – Used when adding a new feature to the project.</li>
+          <li><strong>fix</strong> – Used when fixing a bug or issue in the code.</li>
+          <li><strong>docs</strong> – Used for documentation updates only.</li>
+          <li><strong>style</strong> – Formatting changes that do not affect code logic (spaces, indentation, semicolons).</li>
+          <li><strong>refactor</strong> – Code restructuring without adding features or fixing bugs.</li>
+          <li><strong>perf</strong> – Used for performance improvements.</li>
+          <li><strong>test</strong> – Adding or updating tests only.</li>
+          <li><strong>build</strong> – Changes to build tools or dependencies.</li>
+          <li><strong>ci</strong> – Changes related to continuous integration pipelines (GitHub Actions, Jenkins, etc.).</li>
+          <li><strong>chore</strong> – Routine tasks or maintenance that don’t affect src or test files.</li>
+          <li><strong>revert</strong> – When reverting a previous commit.</li>
+        </ul>
       <h3 class="h2 mt-4 mb-3">Recommended rules</h3>
       <pre class="text-bg-dark p-3 rounded"><code>type(scope): short summary (<=50 chars) 
         
-A more detailed description of the change, explaining why it was made and any 
-additional context. Wrap lines at ~72 characters. 
+A more detailed description of the change, explaining why it was made and any additional context. Wrap lines at ~72 characters. 
 
 Refs: #123</code></pre>
 
       <h3 class="h2 mt-4 mb-3">Example</h3>
-      <pre class="text-bg-dark p-3 rounded"><code># A backslash \ at the end of a line tells the shell the command continues
-on the next line.
+      <pre class="text-bg-dark p-3 rounded"><code><span class="text-info"># A backslash \ at the end of a line tells the shell the command continues on the next line for Linux/MacOS only.</span>
 
-<span class="text-success">git commit -m "feat(auth): add Google login button" \ 
-           -m "A more detailed description of the change, explaining why it
-            was made and any additional context. This change integrates OAuth2
-            authentication so users can log in using their Google account.
-Refs: #24"</span></code></pre>
+<span class="text-light">git <span class="text-warning">commit -m</span> "feat(auth): add Google login button" <span class="text-warning">-m</span> "A more detailed description of the change, explaining why it was made and any additional context. This change integrates OAuth2 authentication so users can log in using their Google account. Refs: #24"</span></code></pre>
     </section>
     <section id="resources" class="mb-5">
       <h2 class="h1 mb-4">Resources</h2>
@@ -109,6 +359,11 @@ Refs: #24"</span></code></pre>
   <li class="mb-2">
     <a href="https://www.conventionalcommits.org/" class="text-decoration-none custom-link">
       Conventional Commits
+    </a>
+  </li>
+  <li class="mb-2">
+    <a href="https://github.com/git-guides" class="text-decoration-none custom-link">
+      Git Guides by GitHub
     </a>
   </li>
 </ul>
