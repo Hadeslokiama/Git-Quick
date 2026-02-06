@@ -36,7 +36,7 @@ git <span class="text-warning">config</span> --global user.email "you@example.co
       <p>An SSH key lets your computer securely connect to GitHub without using a password.
 It provides safe, encrypted authentication, makes Git operations like push/pull easier, and is more secure than using a password.</p>
       <pre class="text-bg-dark p-3 rounded"><code><span class="text-info"># Generate an SSH key</span>
-<span class="text-warning">ssh-keygen -t rsa -b 4096 -C</span> "you@example.com"
+<span class="text-warning">ssh-keygen -t ed25519 -C</span> "you@example.com"
 
 # Once you run the command press Enter to accept the default file location.
 # Next, you'll be prompted to enter a passphrase. You can choose to set one for added security or leave it empty for no passphrase (by pressing Enter twice).
@@ -52,9 +52,11 @@ ssh-add -l
 
 <span class="text-info"># Copy the SSH key to your clipboard</span>
 <span class="text-warning">cat</span> ~/.ssh/id_ed25519.pub
+<span class="text-info"># (Copy the full output starting with "ssh-ed25519 ...")</span>
 
 <span class="text-info"># Add your Generated SSH key to GitHub</span>
-GitHub → Settings → SSH and GPG keys → New SSH key → Enter any title → Paste your key → Add SSH key</span>
+<span class="text-info"># Go to GitHub → Settings → SSH and GPG keys → New SSH key</span>
+<span class="text-info"># Give it a title, paste the public key, then click "Add SSH key".</span>
 </code></pre>
     </section>
     <section id="cheatsheet" class="mb-5">
@@ -88,7 +90,10 @@ GitHub → Settings → SSH and GPG keys → New SSH key → Enter any title →
       <div class="accordion-body">
         The <code>git clone</code> command copies a remote repository (e.g., from GitHub) to your local machine. The URL specifies the location of the repository you want to clone. Which can be found on the repository page on GitHub by clicking the <strong>"Code"</strong> button and copying the URL provided. You may choose either the HTTPS or SSH URL based on your authentication preference.
         <h5>Command:</h5>
+        <span class="text-info"># Via HTTPS</span>
         <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">clone</span> https://github.com/user/repo.git</span></code></pre>
+        <span class="text-info"># Via SSH</span>
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">clone</span> git@github.com:user/repo.git</span></code></pre>
         <h5>Output:</h5>
         <pre class="text-bg-dark p-3 rounded"><code>Cloning into 'repo'...
 remote: Enumerating objects: 42, done.
