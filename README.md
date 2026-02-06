@@ -25,13 +25,3 @@ This initiative aims to make Git approachable for newcomers while promoting best
 ### Deployment
 
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-
-## File Structure
-
-```
-Git-Quick Project
-├───index.html
-├───README.md
-├───styles.css
-└───Z Logo.png
-```
