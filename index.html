@@ -209,6 +209,32 @@ git <span class="text-warning">checkout -b</span> feature-login</span>
       </div>
     </div>
   </div>
+  <!-- Fetch -->
+  <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFetch" aria-expanded="false" aria-controls="collapseFetch">
+      Fetch Remote Changes
+    </button>
+  </h2>
+  <div id="collapseFetch" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+    <div class="accordion-body">
+      The <code>git fetch</code> command downloads new commits, branches, and tags from a remote repository without modifying your current working directory or local branches. It updates your remote-tracking references (e.g., <code>origin/main</code> or <code>upstream/main</code>) so you can review changes before merging or rebasing.
+      <h5>Command:</h5>
+      <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">fetch</span> origin</span>
+</code></pre>
+      <h5>Example (with upstream remote):</h5>
+      <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">fetch</span> upstream</span>
+</code></pre>
+      <h5>Output:</h5>
+      <pre class="text-bg-dark p-3 rounded"><code>remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+Unpacking objects: 100% (3/3), done.
+From https://github.com/original-owner/project
+a1b2c3d..e4f5g6h main -> upstream/main
+</code></pre>
+    </div>
+  </div>
+  </div>
   <!-- Merge -->
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -221,7 +247,7 @@ git <span class="text-warning">checkout -b</span> feature-login</span>
         The <code>git merge</code> command combines changes from one branch into another. It can create a merge commit or fast-forward, depending on the branch history. Conflicts may appear if both branches modify the same parts of a file.
         <h5>Command:</h5>
         <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">checkout</span> main
-git <span class="text-warning">merge</span> feature-login</span>
+git <span class="text-warning">merge</span> branch-name</span>
 </code></pre>
         <h5>Output:</h5>
         <pre class="text-bg-dark p-3 rounded"><code>Updating 1a2b3c..4d5e6f
@@ -242,7 +268,7 @@ Fast-forward
       <div class="accordion-body">
         The <code>git rebase</code> command rewrites history by moving your branch onto the latest version of another branch. It creates a cleaner, linear commit history. Avoid rebasing public/shared branches to prevent conflicts for others.
         <h5>Command:</h5>
-        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">checkout</span> feature-login
+        <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">checkout</span> branch-name
 git <span class="text-warning">rebase</span> main</span>
 </code></pre>
       </div>
@@ -326,6 +352,173 @@ git <span class="text-warning">stash apply</span></span>
   </div>
 </div>
     </section>
+
+    <section id="contribute" class="mb-5">
+  <h2 class="h1 mb-4">How to Contribute</h2>
+  <p>This section explains the standard workflow for contributing to a repository using a fork-and-pull request model. It follows best practices used in collaborative projects.</p>
+  <div class="accordion" id="contributeAccordion">
+    <!-- Fork Repository -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#contributeTwo">
+          Fork the Repository
+        </button>
+      </h2>
+      <div id="contributeTwo" class="accordion-collapse collapse show" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Forking creates your own copy of the repository under your GitHub account. This allows you to make changes without affecting the original project.
+          <ul>
+            <li>Go to the repository on GitHub.</li>
+            <li>Click the <strong>Fork</strong> button.</li>
+            <li>Wait for GitHub to create your copy.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Clone -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contributeThree">
+          Clone Your Fork
+        </button>
+      </h2>
+      <div id="contributeThree" class="accordion-collapse collapse" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Clone your fork to your local machine.
+
+          <h5>Command:</h5>
+          <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">clone</span> https://github.com/your-username/project.git
+<span class="text-warning">cd</span> project</span></code></pre>
+
+          <p>Add the original repository as upstream to stay updated.</p>
+
+          <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">remote add</span> upstream https://github.com/original-owner/project.git</span></code></pre>
+        </div>
+      </div>
+    </div>
+    <!-- Create Branch -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contributeFour">
+          Create a New Branch
+        </button>
+      </h2>
+      <div id="contributeFour" class="accordion-collapse collapse" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Never work directly on <code>main</code>. Create a separate branch for your feature or fix.
+
+          <h5>Command:</h5>
+          <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">checkout -b</span> branch-name</span></code></pre>
+        </div>
+      </div>
+    </div>
+    <!-- Sync -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contributeFive">
+          Sync with Latest Changes
+        </button>
+      </h2>
+      <div id="contributeFive" class="accordion-collapse collapse" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Keep your branch updated before making changes.
+
+          <h5>Command:</h5>
+          <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">fetch</span> upstream
+git <span class="text-warning">checkout</span> main
+git <span class="text-warning">merge</span> upstream/main
+git <span class="text-warning">checkout</span> branch-name
+git <span class="text-warning">rebase</span> main</span></code></pre>
+        </div>
+      </div>
+    </div>
+    <!-- Make Changes -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contributeSix">
+          Make Your Changes
+        </button>
+      </h2>
+      <div id="contributeSix" class="accordion-collapse collapse" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Modify files as needed. Always check status before committing.
+
+          <h5>Command:</h5>
+          <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">status</span></span></code></pre>
+        </div>
+      </div>
+    </div>
+    <!-- Stage -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contributeSeven">
+          Stage Changes
+        </button>
+      </h2>
+      <div id="contributeSeven" class="accordion-collapse collapse" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Add files to the staging area.
+
+          <h5>Command:</h5>
+          <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">add</span> .
+<span class="text-info"># or add specific file</span>
+git <span class="text-warning">add</span> filename.ext</span></code></pre>
+        </div>
+      </div>
+    </div>
+    <!-- Commit -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contributeEight">
+          Commit Changes
+        </button>
+      </h2>
+      <div id="contributeEight" class="accordion-collapse collapse" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Create a commit following the global commit convention.
+
+          <h5>Command:</h5>
+          <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">commit -m</span> "feat(scope): short summary"</span></code></pre>
+        </div>
+      </div>
+    </div>
+    <!-- Push -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contributeNine">
+          Push to Your Fork
+        </button>
+      </h2>
+      <div id="contributeNine" class="accordion-collapse collapse" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Upload your branch to GitHub.
+
+          <h5>Command:</h5>
+          <pre class="text-bg-dark p-3 rounded"><code><span class="text-light">git <span class="text-warning">push</span> origin branch-name</span></code></pre>
+        </div>
+      </div>
+    </div>
+    <!-- Open Pull Request -->
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#contributeTen">
+          Open a Pull Request
+        </button>
+      </h2>
+      <div id="contributeTen" class="accordion-collapse collapse" data-bs-parent="#contributeAccordion">
+        <div class="accordion-body">
+          Open a Pull Request (PR) on GitHub to propose your changes.
+          <ul>
+            <li>Go to your fork.</li>
+            <li>Click <strong>Compare & Pull Request</strong>.</li>
+            <li>Ensure base repository is the original project.</li>
+            <li>Write a clear title and description.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section id="commit-convention" class="mb-5">
       <h2 class="h1 mb-4">Global Commit Convention</h2>
