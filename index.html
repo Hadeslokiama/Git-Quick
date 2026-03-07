@@ -324,7 +324,7 @@
     </div>
 
     <!-- Linux -->
-    <div class="md:col-span-4 glass-card rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 card-hover-glow">
+    <div class="md:col-span-6 glass-card rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 card-hover-glow">
       <div class="flex items-center gap-4 mb-6">
         <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
           <span class="material-symbols-outlined text-3xl">terminal</span>
@@ -342,23 +342,21 @@
       </p>
     </div>
 
-    <!-- Global Identity Card -->
-    <div class="md:col-span-2 bg-primary rounded-2xl p-8 text-white relative overflow-hidden group">
-      <div class="relative z-10">
-        <h3 class="font-bold text-xl mb-2">Global Identity</h3>
-        <p class="text-white/80 text-sm mb-6">Set your name and email once for all projects.</p>
-        <div class="space-y-2 font-mono text-xs">
-          <div class="bg-white/10 p-2 rounded">git config --global user.name "Your Name"</div>
-          <div class="bg-white/10 p-2 rounded">git config --global user.email "mail@example.com"</div>
-        </div>
-      </div>
-      <span class="material-symbols-outlined absolute -bottom-4 -right-4 text-white/10 text-[120px] group-hover:scale-110 transition-transform">badge</span>
-    </div>
+  </div> <!-- END Bento Grid -->
 
-  </div>
-
-  <!-- ── Essential Global Configuration ── -->
+  <!-- Global Config -->
   <div class="mt-16">
+    <div class="flex items-center gap-2 mb-3">
+      <span class="w-6 h-0.5 bg-primary rounded-full"></span>
+      <span class="text-primary text-xs font-bold uppercase tracking-widest">Configuration</span>
+    </div>
+    <h3 class="text-2xl font-bold dark:text-white mb-4">Essential Global Configuration</h3>
+    <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+      These Git settings are essential because they tell Git who you are, so your commits
+      include your name and email. This ensures your work is properly attributed, linked
+      to your GitHub account, and consistent across all your projects.
+    </p>
+
     <!-- Config Code Block -->
     <div class="glass-card rounded-2xl overflow-hidden code-glow border-l-4 border-l-primary">
       <!-- Header -->
@@ -553,9 +551,6 @@
   </div>
 </section>
 
-<!-- ============================================================ -->
-<!--  CHEAT SHEET SECTION                                         -->
-<!-- ============================================================ -->
 <section class="py-24 px-6 max-w-7xl mx-auto" id="cheatsheet">
 
   <!-- Section Header + Filter Buttons -->
