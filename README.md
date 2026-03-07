@@ -40,4 +40,4 @@ This initiative aims to make Git approachable for newcomers while promoting best
 
 ### License
 
-![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)]
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
