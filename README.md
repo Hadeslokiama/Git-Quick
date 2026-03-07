@@ -38,10 +38,6 @@ This initiative aims to make Git approachable for newcomers while promoting best
 ### Deployment
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
----
+### License
 
-## License
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://choosealicense.com/licenses/mit/)
-
-This project is licensed under the MIT License.
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)]
